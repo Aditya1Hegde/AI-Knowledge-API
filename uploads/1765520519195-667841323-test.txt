@@ -1,0 +1,5 @@
+This is a test document for the AI Knowledge API.
+It contains multiple lines of text that will be processed.
+The system will extract this text and split it into chunks.
+Each chunk will be stored in the database for later retrieval.
+This demonstrates the document processing pipeline.
