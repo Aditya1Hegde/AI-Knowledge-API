@@ -5,16 +5,13 @@ dotenv.config();
 
 const { Pool } = pg;
 
-// Parse connection string manually for better reliability
+// Use DATABASE_URL from environment (Railway provides this automatically)
+// Falls back to individual variables for local development
 const pool = new Pool({
-  host: 'ep-still-surf-ad1my17b-pooler.c-2.us-east-1.aws.neon.tech',
-  database: 'neondb',
-  user: 'neondb_owner',
-  password: 'npg_A3cPwDvNYQ7t',
-  port: 5432,
-  ssl: {
-    rejectUnauthorized: false
-  },
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { 
+    rejectUnauthorized: false 
+  } : false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
